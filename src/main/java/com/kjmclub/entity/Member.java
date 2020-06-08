@@ -1,9 +1,6 @@
 package com.kjmclub.entity;
 
-import org.hibernate.annotations.JoinColumnOrFormula;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -32,10 +31,20 @@ public class Member {
     private Time  dob;
 
     @OneToOne(mappedBy = "member",cascade = CascadeType.REMOVE)
+    @Basic(fetch=FetchType.LAZY)
     private MemberDetails memberDetails;
 
     @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE)
+    @Basic(fetch = FetchType.LAZY)
     private List<Address> addresses;
+
+    @ManyToMany
+    @JoinTable(
+            name = "MEMBER_ACTIVITY",
+            joinColumns = @JoinColumn(name = "MEMBER_ID"),
+            inverseJoinColumns = @JoinColumn(name  = "ACTIVITY_ID")
+    )
+    private List<Activity> activities;
 
     public Member() {
     }

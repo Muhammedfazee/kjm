@@ -1,8 +1,5 @@
 package com.kjmclub.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +13,7 @@ public class MemberDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "MEMEBR_DETAIL_ID")
+    @Column(name = "MEMBER_DETAIL_ID")
     private Long memberDetailsId;
     private Long phone;
     private String email;
@@ -24,7 +21,7 @@ public class MemberDetails {
     private String bloodGroup;
 
     @OneToOne
-    @JoinColumn(name = "MEMBER_ID")
+    @JoinColumn(name = "MEMBER_ID",nullable = false)
     private Member member;
 
     public Long getMemberDetailsId() {

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.sql.Time;
 import java.util.List;
 
 @Repository
@@ -51,7 +50,6 @@ public class MemberDAOImpl implements MemberDAO {
 
     public Member findMemberById(Long memberId){
         Session session = entityManager.unwrap(Session.class);
-
         Query<Member> query =
                 session.createQuery("from MEMBER M where M.memberId = :memberId ", Member.class);
         query.setParameter("memberId",memberId);

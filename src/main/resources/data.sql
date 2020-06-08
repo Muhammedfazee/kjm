@@ -9,3 +9,13 @@ INSERT INTO MEMBER_DETAIL (MEMEBR_DETAIL_ID, phone, email , BLOOD_GROUP , MEMBER
 INSERT INTO ADDRESS (ADDRESS_ID, ADDRESS_LINE_1, ADDRESS_LINE_2 , city , state , country ,ZIP_CODE , type , MEMBER_ID) VALUES
   (301 ,'House no 43', 'Btm Layout', 'bangalore','Karnataka','India','560076' , 'work' ,100),
   (302 ,'Kadaiyarevida', 'Koylandi', 'kozhikode','Kerala','India','686011' , 'Home' ,100);
+INSERT INTO ACTIVITY (ACTIVITY_ID, desc, type ) VALUES
+  (400 ,'Football', 'Sports'),
+  (401,  'Cricket', 'Sports'),
+  (402, 'FIFA', 'Game');
+INSERT INTO MEMBER_ACTIVITY (MEMBER_ID , ACTIVITY_ID ) VALUES
+  (100 , 400),
+  (100 ,  401),
+  (101 , 400),
+  (101 , 401),
+  (101 , 402);
